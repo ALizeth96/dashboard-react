@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './UserTable.css';
 
 const UserTable = ({ users, searchTerm }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,8 +23,8 @@ const UserTable = ({ users, searchTerm }) => {
   };
 
   return (
-    <div>
-      <table>
+    <div className="user-table-container">
+      <table className="user-table">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -42,11 +43,13 @@ const UserTable = ({ users, searchTerm }) => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: '1rem' }}>
+      <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           Anterior
         </button>
-        <span style={{ margin: '0 1rem' }}>Página {currentPage} de {totalPages}</span>
+        <span>
+          Página {currentPage} de {totalPages}
+        </span>
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
           Siguiente
         </button>

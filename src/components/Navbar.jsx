@@ -1,10 +1,14 @@
 import React from 'react';
-import './Navbar.css'; // opcional, si usarás un archivo de estilos separado
+import { Users } from 'lucide-react';
+import './Navbar.css';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <h1>Panel de Usuarios</h1>
+      <div className="navbar-content">
+        <Users className="navbar-icon" size={32} />
+        <h1 className="navbar-title">Panel de Usuarios</h1>
+      </div>
     </nav>
   );
 };
