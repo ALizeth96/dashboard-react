@@ -1,34 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const UserTable = ({ users, searchTerm }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 5;
+
   const filteredUsers = users.filter(user =>
     user.country.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
+  const startIndex = (currentPage - 1) * usersPerPage;
+  const currentUsers = filteredUsers.slice(startIndex, startIndex + usersPerPage);
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage(prev => prev - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(prev => prev + 1);
+  };
+
   return (
     <div>
-      {filteredUsers.length === 0 ? (
-        <p>No se encontraron usuarios.</p>
-      ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ backgroundColor: '#f2f2f2' }}>
-              <th style={{ padding: '8px', border: '1px solid #ddd' }}>Nombre</th>
-              <th style={{ padding: '8px', border: '1px solid #ddd' }}>Email</th>
-              <th style={{ padding: '8px', border: '1px solid #ddd' }}>País</th>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>País</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentUsers.map((user, index) => (
+            <tr key={index}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.country}</td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredUsers.map((user, index) => (
-              <tr key={index}>
-                <td style={{ padding: '8px', border: '1px solid #ddd' }}>{user.name}</td>
-                <td style={{ padding: '8px', border: '1px solid #ddd' }}>{user.email}</td>
-                <td style={{ padding: '8px', border: '1px solid #ddd' }}>{user.country}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+          ))}
+        </tbody>
+      </table>
+
+      <div style={{ marginTop: '1rem' }}>
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          Anterior
+        </button>
+        <span style={{ margin: '0 1rem' }}>Página {currentPage} de {totalPages}</span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Siguiente
+        </button>
+      </div>
     </div>
   );
 };
