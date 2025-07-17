@@ -1,26 +1,15 @@
 import React from 'react';
+import './SearchBar.css';
 
-const SearchBar = ({ searchTerm, onSearchChange }) => {
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
-    <div style={{ marginBottom: '1rem' }}>
-      <label htmlFor="search" style={{ display: 'block', marginBottom: '0.5rem' }}>
-        Filtrar por país:
-      </label>
-      <input
-        type="text"
-        id="search"
-        placeholder="Ej: Venezuela, México, Colombia..."
-        value={searchTerm}
-        onChange={(e) => onSearchChange(e.target.value)}
-        style={{
-          padding: '0.5rem',
-          borderRadius: '4px',
-          border: '1px solid #ccc',
-          width: '100%',
-          maxWidth: '300px'
-        }}
-      />
-    </div>
+    <input
+      type="text"
+      placeholder="Buscar usuario..."
+      className="search-bar"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
   );
 };
 

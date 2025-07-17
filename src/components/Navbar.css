@@ -1,35 +1,107 @@
+/* Navbar general */
 .navbar {
-  background-color: #1e293b;
-  color: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.navbar-content {
+/* Título izquierdo */
+.navbar-left .navbar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a8a; /* azul oscuro */
+}
+
+/* Sección derecha */
+.navbar-right {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Íconos */
+.navbar-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-icons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #334155;
+  transition: transform 0.2s ease;
+}
+
+.navbar-icons button:hover {
+  transform: scale(1.1);
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
   gap: 0.75rem;
+  padding-right: 1rem;
+}
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb; /* borde suave opcional */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* sombra ligera */
 }
 
-.navbar-icon {
-  color: white;
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #cbd5e1;
 }
 
-.navbar-title {
-  font-size: 1.8rem;
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  line-height: 1.1;
+}
+
+.profile-name {
   font-weight: 600;
-  margin: 0;
+  color: #1f2937;
 }
 
+.profile-company {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .navbar-content {
-    flex-direction: row;
-    justify-content: center;
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
   }
 
-  .navbar-title {
-    font-size: 1.4rem;
-    text-align: center;
+  .navbar-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .navbar-profile {
+    gap: 0.5rem;
   }
 }
+

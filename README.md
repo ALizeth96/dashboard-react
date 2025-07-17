@@ -1,12 +1,41 @@
-# React + Vite
+# 🔹 Dashboard React - Proyecto UI/UX Profesional para Reto Técnico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una solución profesional y funcional para el reto de selección como **Desarrolladora de Software Junior**.  
+Construido con **React + Vite**, el dashboard presenta una arquitectura clara, diseño moderno, acceso a datos en tiempo real mediante una API pública y una experiencia de usuario accesible y responsive.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- ⚛️ React + Vite
+- 🎨 CSS modularizado por componente
+- 🧠 React Hooks (`useState`, `useEffect`)
+- 🌐 Fetch API para llamadas a servicios externos
+- 📦 Estructura desacoplada y escalable por componentes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📅 Funcionalidades implementadas
+
+- ✅ Gráfico de torta con distribución de datos (por marca)
+- ✅ Gráfico de líneas con volumen de ventas
+- ✅ Panel de KPIs y resumen de pagos
+- ✅ Tabla dinámica de usuarios
+- ✅ Filtros por país y estado (activo/inactivo)
+- ✅ Estados de carga y error
+- ✅ Layout completamente responsive
+- ✅ Accesibilidad (uso de `aria-label`, contraste, navegación con teclado)
+
+---
+
+## 📊 Estructura del proyecto
+
+```bash
+src/
+├── assets/               # Recursos estáticos
+├── components/           # Componentes UI reutilizables (Navbar, Filtros, etc)
+├── pages/
+│   └── ResumenPanel/     # Panel principal con gráficos y KPIs
+├── UserTable/            # Tabla dinámica con filtros
+├── App.jsx               # Enrutamiento principal
+└── main.jsx              # Punto de entrada al DOM
