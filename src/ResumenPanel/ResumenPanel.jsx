@@ -2,10 +2,9 @@ import GraficoTorta from "./GraficoTorta";
 import Kpis from "./Kpis";
 import GraficoLinea from "./GraficoLinea";
 import UserTable from "../UserTable/UserTable.jsx";
-
 import "./ResumenPanel.css";
 
-const ResumenPanel = () => {
+const ResumenPanel = ({ users }) => {
   return (
     <>
       <div className="resumen-panel-grid">
@@ -32,7 +31,7 @@ const ResumenPanel = () => {
           <GraficoLinea />
         </div>
         <div className="user-table-wrapper">
-          <UserTable />
+          <UserTable users={users} /> {/* ✅ Aquí pasamos los usuarios filtrados */}
         </div>
       </div>
     </>
