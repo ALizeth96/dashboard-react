@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-size: 0.7rem; /* más pequeño */
+  font-size: 0.7rem;
 }
 
 .kpis-lista {
@@ -30,7 +30,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.7rem; /* más pequeño */
+  font-size: 0.7rem;
   border-bottom: 1px solid #f3f4f6;
   padding: 0.2rem 0;
   line-height: 1.2;
@@ -74,7 +74,6 @@
   justify-content: flex-start;
   background-color: #ffffff;
   padding: 0.5rem;
-
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -130,38 +129,54 @@
   font-weight: 600;
   text-align: left;
 }
+
 .pagos-container {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centrado vertical */
-  align-items: center;     /* centrado horizontal */
-  text-align: center;      /* centra el texto */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
+.pagos-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.pagos-container h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.total-pagos {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.total-pagos-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+}
+
+.actualizado-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
 
 .grafico-container,
 .resumen-container,
 .pagos-container {
   flex: 1;
-}
-
-.total-pagos {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #111827;
-  text-align: left;
-}
-
-.total-pagos-label {
-  font-size: 0.8rem;
-  color: #6b7280;
-  text-align: left;
-}
-
-.actualizado-label {
-  font-size: 0.75rem;
-  color: #9ca3af;
-  text-align: left;
 }
 
 .grafico-linea-wrapper {
@@ -199,13 +214,44 @@
     height: auto;
   }
 
-
-
-
   .grafico-linea-wrapper h3 {
     margin-bottom: 1rem;
     font-size: 1.1rem;
     color: #374151;
     font-weight: 600;
   }
+
+.usuarios-activos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  min-height: 220px;
+}
+
+.usuarios-activos-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
+.usuarios-activos-cifra {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #10b981; /* verde esmeralda */
+}
+
+.usuarios-activos-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+
 }

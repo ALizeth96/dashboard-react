@@ -83,6 +83,8 @@ const Dashboard = () => {
   const [paisSeleccionado, setPaisSeleccionado] = useState("");
   const [estadoSeleccionado, setEstadoSeleccionado] = useState("todas");
   const [usuariosFiltrados, setUsuariosFiltrados] = useState(usersData);
+ 
+
 
   const filtrarUsuarios = () => {
     const filtrados = usersData.filter((user) => {

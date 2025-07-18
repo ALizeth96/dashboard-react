@@ -1,20 +1,35 @@
 import React from "react";
 import "./ResumenPanel.css";
 
-const datos = [
-  { label: "Total, Ventas", valor: 5.5, color: "#22c55e" },
-  { label: "Comisiones", valor: 20.53, color: "#65a30d" },
-  { label: "Servicios", valor: 0.0, color: "#0ea5e9" },
-  { label: "Vueltos", valor: 0.0, color: "#8b5cf6" },
-  { label: "Propinas", valor: 0.0, color: "#9333ea" },
-  { label: "Devoluciones", valor: -1681.0, color: "#ef4444" },
-  { label: "Descuentos de Ley", valor: 0.0, color: "#e11d48" },
-  { label: "Retenciones", valor: 33.51, color: "#0ea5e9" },
-  { label: "Otros", valor: 0.0, color: "#f59e0b" },
-  { label: "Total, Pagos", valor: -1621.46, color: "#7c3aed" },
-];
+const calcularKpis = (users) => {
+  const totalVentas = users.length * 10; // Simulación: cada usuario representa $10
+  const comisiones = users.length * 2;   // Simulación
+  const servicios = 0;
+  const vueltos = 0;
+  const propinas = 0;
+  const devoluciones = -50;
+  const descuentos = 0;
+  const retenciones = users.length * 1.5;
+  const otros = 0;
+  const totalPagos = totalVentas + comisiones + servicios + vueltos + propinas + devoluciones + descuentos + retenciones + otros;
 
-const Kpis = () => {
+  return [
+    { label: "Total, Ventas", valor: totalVentas, color: "#22c55e" },
+    { label: "Comisiones", valor: comisiones, color: "#65a30d" },
+    { label: "Servicios", valor: servicios, color: "#0ea5e9" },
+    { label: "Vueltos", valor: vueltos, color: "#8b5cf6" },
+    { label: "Propinas", valor: propinas, color: "#9333ea" },
+    { label: "Devoluciones", valor: devoluciones, color: "#ef4444" },
+    { label: "Descuentos de Ley", valor: descuentos, color: "#e11d48" },
+    { label: "Retenciones", valor: retenciones, color: "#0ea5e9" },
+    { label: "Otros", valor: otros, color: "#f59e0b" },
+    { label: "Total, Pagos", valor: totalPagos, color: "#7c3aed" },
+  ];
+};
+
+const Kpis = ({ users }) => {
+  const datos = calcularKpis(users);
+
   return (
     <div className="kpis-container">
       <h3 className="kpis-titulo">Montos del período</h3>
