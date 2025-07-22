@@ -3,38 +3,41 @@ import "./UserTable.css";
 
 const UserTable = ({ users }) => {
   return (
-    <div className="user-table-container">
-      <h3>Usuarios</h3>
-      <table className="user-table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Estado</th>
-            <th>País</th>
-            <th>Correo</th>
-            <th>Último ingreso</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.length > 0 ? (
-            users.map((u, i) => (
-              <tr key={i}>
-                <td>{u.nombre}</td>
-                <td className={u.estado === "Activo" ? "activo" : "inactivo"}>{u.estado}</td>
-                <td>{u.pais}</td>
-                <td>{u.correo}</td>
-                <td>{u.ultimoIngreso}</td>
-              </tr>
-            ))
-          ) : (
+    <div className="tabla-wrapper">
+      {users.length === 0 ? (
+        <p className="mensaje-vacio">No hay usuarios para mostrar</p>
+      ) : (
+        <table className="tabla-usuarios">
+          <thead>
             <tr>
-              <td colSpan="5" style={{ textAlign: "center", padding: "10px" }}>
-                No se encontraron usuarios.
-              </td>
+              <th>Nombre</th>
+              <th>Estado</th>
+              <th>País</th>
+              <th>Correo</th>
+              <th>Último ingreso</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr key={`${user.correo}-${index}`} className={user.estado.toLowerCase()}>
+                <td>{user.nombre}</td>
+                <td>
+                  <span
+                    className={`estado-indicador ${
+                      user.estado.toLowerCase() === "activo" ? "verde" : "rojo"
+                    }`}
+                    title={user.estado}
+                  ></span>{" "}
+                  {user.estado}
+                </td>
+                <td>{user.pais}</td>
+                <td>{user.correo}</td>
+                <td>{user.ultimoIngreso}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

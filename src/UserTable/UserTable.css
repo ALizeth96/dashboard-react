@@ -1,42 +1,50 @@
-.user-table-container {
-  background: #ffffff;
-  padding: 1rem;
-  margin: 1rem auto;
-  border-radius: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  max-width: 1200px;
+.tabla-wrapper {
+  overflow-x: auto;
+  max-height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 1rem;
 }
 
-.user-table-container h3 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  text-align: left;
-}
-
-.user-table {
+.tabla-usuarios {
   width: 100%;
   border-collapse: collapse;
 }
 
-.user-table th,
-.user-table td {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0.75rem 1rem;
+.tabla-usuarios th,
+.tabla-usuarios td {
+  padding: 10px;
   text-align: left;
+  border-bottom: 1px solid #eee;
 }
 
-.user-table th {
-  background-color: #f9fafb;
-  font-weight: 600;
-  color: #374151;
+.tabla-usuarios tr.activo {
+  background-color: #e6ffed;
 }
 
-.activo {
-  color: #10b981;
-  font-weight: bold;
+.tabla-usuarios tr.inactivo {
+  background-color: #fff5f5;
 }
 
-.inactivo {
-  color: #ef4444;
-  font-weight: bold;
+.mensaje-vacio {
+  padding: 1rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.estado-indicador {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.estado-indicador.verde {
+  background-color: #10b981; /* verde */
+}
+
+.estado-indicador.rojo {
+  background-color: #ef4444; /* rojo */
 }

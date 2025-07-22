@@ -4,11 +4,27 @@ import Kpis from "./Kpis";
 import GraficoLinea from "./GraficoLinea";
 import UserTable from "../UserTable/UserTable.jsx";
 import "./ResumenPanel.css";
-import UsuariosActivos from "./UsuariosActivos";
 
-const ResumenPanel = ({ users }) => {
-  // Detectar cuántos usuarios están activos según el campo isActive
+const ResumenPanel = ({ users, filtroEstado }) => {
+  // Calcular cantidad de usuarios activos
   const usuariosActivos = users.filter((u) => u.estado.toLowerCase() === "activo");
+
+  // Determinar cantidad a mostrar
+  const cantidadMostrar =
+    filtroEstado.toLowerCase() === "activo"
+      ? usuariosActivos.length
+      : filtroEstado.toLowerCase() === "inactivo"
+      ? users.length
+      : usuariosActivos.length;
+
+  // Color dinámico del puntico según el filtro
+  let colorIndicador = "#d1d5db"; // blanco por defecto
+
+  if (filtroEstado.toLowerCase() === "activo") {
+    colorIndicador = "#10b981"; // verde
+  } else if (filtroEstado.toLowerCase() === "inactivo") {
+    colorIndicador = "#ef4444"; // rojo
+  }
 
   return (
     <>
@@ -18,15 +34,18 @@ const ResumenPanel = ({ users }) => {
           <GraficoTorta users={users} />
         </div>
 
-        {/* KPIs */}
+        {/* KPIs (simulados) */}
         <div className="card-panel resumen-container">
           <Kpis users={users} />
         </div>
 
-        {/* Panel de usuarios activos */}
+        {/* Indicador de usuarios filtrados */}
         <div className="card-panel pagos-container">
           <h3>
-            Usuarios activos{" "}
+            Usuarios{" "}
+            {filtroEstado.toLowerCase() === "todas"
+              ? "activos"
+              : filtroEstado.charAt(0).toUpperCase() + filtroEstado.slice(1)}
             <span
               style={{
                 display: "inline-block",
@@ -34,19 +53,20 @@ const ResumenPanel = ({ users }) => {
                 height: "12px",
                 borderRadius: "50%",
                 marginLeft: "0.5rem",
-                backgroundColor: usuariosActivos.length > 0 ? "#10b981" : "#ef4444",
+                backgroundColor: colorIndicador,
               }}
-              aria-label={
-                usuariosActivos.length > 0
-                  ? "Usuarios activos"
-                  : "Ningún usuario activo"
-              }
+              aria-label={`Cantidad: ${cantidadMostrar}`}
             ></span>
           </h3>
-          <div className="total-pagos">{usuariosActivos.length}</div>
+
+          <div className="total-pagos">{cantidadMostrar}</div>
+
           <div className="total-pagos-label">
-            Usuarios activos en el período actual (simulado).
+            {filtroEstado === "todas"
+              ? "Usuarios activos en el periodo actual."
+              : `Usuarios ${filtroEstado.toLowerCase()}s encontrados.`}
           </div>
+
           <div className="actualizado-label">
             Información actualizada al {new Date().toLocaleDateString()}
           </div>
@@ -58,6 +78,7 @@ const ResumenPanel = ({ users }) => {
         <div className="grafico-linea-wrapper">
           <GraficoLinea users={users} />
         </div>
+
         <div className="user-table-wrapper">
           <UserTable users={users} />
         </div>
